@@ -1,0 +1,24 @@
+const jwt = require('jsonwebtoken');
+
+exports.isAuth = async (req,res,next)=>{
+    const token = req.header('token');
+    // console.log(token);
+    try{
+
+        const success = await jwt.verify(token , 'Luke Skywalker' , {algorithms : "HS256"});
+        if(success){
+            next();
+        }else{
+            res.json({
+                success : false,
+                message : 'Invalid Token'
+            })
+        }
+
+    }catch(err){
+        res.json({
+            success : false,
+            message : "Invalid Token"
+        })
+    }
+}

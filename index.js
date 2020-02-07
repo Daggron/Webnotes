@@ -37,6 +37,7 @@ app.use(expressSession({
 }))
 
 app.use('/users',require('./server/api/routes/user'));
+app.use('/notes',require('./server/api/routes/notes'));
 
 const port = process.env.PORT || 5000;
 
