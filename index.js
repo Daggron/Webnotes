@@ -2,6 +2,8 @@ const express = require('express');
 require('dotenv').config();
 const app = express();
 const mongoose = require('mongoose');
+const cors = require('cors');
+const expressSession = require('express-session');
 
 const uri = process.env.Db;
 mongoose.connect(uri,{
@@ -20,8 +22,21 @@ db.on('error',(err)=>{
     console.log(err);
 })
 
+//middlewares
 
+app.use(cors());
 
+app.use(express.json());
+
+//express-session
+
+app.use(expressSession({
+    secret : 'Darth Vader',
+    saveUninitialized:true,
+    resave : true
+}))
+
+app.use('/users',require('./server/api/routes/user'));
 
 const port = process.env.PORT || 5000;
 
