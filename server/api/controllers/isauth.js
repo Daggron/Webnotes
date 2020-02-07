@@ -7,6 +7,9 @@ exports.isAuth = async (req,res,next)=>{
 
         const success = await jwt.verify(token , 'Luke Skywalker' , {algorithms : "HS256"});
         if(success){
+            let decode = await jwt.decode(token,'Luke Skywalker');
+            console.log(decode.id);
+            req.session.userid = decode.id;
             next();
         }else{
             res.json({
