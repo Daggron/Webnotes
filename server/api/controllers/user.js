@@ -30,6 +30,11 @@ exports.register = async (req,res)=>{
                         message : 'You have registered successfully'
                     })
                 })
+            }else{
+                res.status(200).json({
+                    success : false,
+                    message : "Please Enter a valid name or password"
+                })
             }
         }
         }catch(err){
