@@ -2,9 +2,12 @@ const mongoose = require('mongoose');
 
 const schema = new mongoose.Schema({
     data : {
-        type : Array
+        type : String
     },
     userId : {
+        type : String
+    },
+    title : {
         type : String
     }
 });
