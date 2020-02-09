@@ -29,9 +29,16 @@ export default function Editor() {
         toolbar : toolbarOptions
     }
 
+    const [note,setNote] = React.useState(null);
+
+    const handleChange = (e)=>{
+        setNote(e);
+    }
+
     return (
         <React.Fragment>
-           <ReactQuill modules={modules} style={{height : "50vh" , width : "90vw" , margin : "auto"}} />
+            {console.log(note)}
+              <ReactQuill onChange={handleChange} className="editor" modules={modules} style={{height : "50vh" , width : "90vw" , margin : "auto" , }} />
         </React.Fragment>
     )
 }

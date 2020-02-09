@@ -4,6 +4,7 @@ import './App.css';
 import importedComponent from 'react-imported-component'
 import loading from './loading';
 
+
 const Page = importedComponent(()=>import('./page'),{
   LoadingComponent : loading
 })
