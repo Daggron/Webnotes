@@ -1,7 +1,11 @@
 import React from 'react'
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { TextField, Typography } from '@material-ui/core';
+import Axios from 'axios';
+import {Add_Note} from '../components/redux/actions/action'
+
 
 var toolbarOptions = [
     ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
@@ -36,11 +40,40 @@ export default function Editor() {
         setNote(e);
     }
 
+    const [title , setTitle] = React.useState(null);
+
+    const handleTitle = (e)=>{
+        setTitle(e.target.value)
+        console.log(title);
+    }
+
+    const dispatch = useDispatch();
     
+    const token = useSelector(state=>state.authenticate.login)
+    const option ={headers : {'token':token} }
+    const handleSave = (e)=>{
+        Axios.post('http://localhost:4000/notes/postnote',{
+            title : title,
+            data : note
+        },option
+        ).then(data=>{
+            console.log(data.data);
+            dispatch(Add_Note(title,note));
+        }).catch(err=>{
+            console.log(err);
+        })
+    }
 
     return (
         <React.Fragment>
-              <ReactQuill onChange={handleChange} className="editor" modules={modules} style={{height : "50vh" , width : "90vw" , margin : "auto" , }} />
+                <Typography variant="h2">
+                    Make a note
+                </Typography>
+                <button onClick={handleSave}>
+                    Save
+                </button>
+                <TextField onChange={handleTitle} label="Title of the note" variant="outlined" style={{width : "90vw"}} />
+              <ReactQuill onChange={handleChange} className="editor" modules={modules} style={{height : "100vh" , width : "90vw" , margin : "auto" , marginTop: 10 }} />
         </React.Fragment>
     )
 }

@@ -2,8 +2,10 @@ const Note = require('../models/notes');
 
 
 exports.addNote = async(req,res)=>{
+    console.log(req.body)
     if(req.body.title && req.body.data){
         console.log(req.session.userid)
+        console.log('here')
             let note = new Note();
             note.title = req.body.title
             note.data = req.body.data;
