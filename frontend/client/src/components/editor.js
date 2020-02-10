@@ -1,6 +1,7 @@
 import React from 'react'
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
+import { useSelector } from 'react-redux';
 
 var toolbarOptions = [
     ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
@@ -35,9 +36,10 @@ export default function Editor() {
         setNote(e);
     }
 
+    
+
     return (
         <React.Fragment>
-            {console.log(note)}
               <ReactQuill onChange={handleChange} className="editor" modules={modules} style={{height : "50vh" , width : "90vw" , margin : "auto" , }} />
         </React.Fragment>
     )

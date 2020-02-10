@@ -8,3 +8,9 @@ export function Add_Note(title , data){
     }
 }
 
+export function Add_Auth(token){
+    return{
+        type : "Login",
+        value : token
+    }
+}

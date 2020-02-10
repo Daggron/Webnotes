@@ -13,15 +13,20 @@ const Editor = importedComponent(()=>import('./components/editor'),{
   LoadingComponent : loading
 })
 
+const Login = importedComponent(()=>import('./components/login/Log'),{
+  LoadingComponent : loading
+})
+
 function App() {
   return (
-   <React.Fragment>
+   <div className="App">
     <BrowserRouter>
       <Switch>
         <Route exact path="/" component={Editor} />
+        <Route  path="/login" component={Login} />
       </Switch>
     </BrowserRouter>
-   </React.Fragment>
+   </div>
   );
 }
 

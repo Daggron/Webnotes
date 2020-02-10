@@ -1,6 +1,6 @@
 import {combineReducers} from 'redux';
 
-function authenticate(state = {login : localStorage.getItem('token') }, action){
+function authenticate(state = {login : localStorage.getItem('authToken') }, action){
     switch(action.type){
         case "Login":
             return {
