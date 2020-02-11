@@ -3,9 +3,9 @@ import {BrowserRouter , Route , Switch } from 'react-router-dom';
 import './App.css';
 import importedComponent from 'react-imported-component'
 import loading from './loading';
+import ResponsiveDrawer from './components/Drawer'
 
-
-const Page = importedComponent(()=>import('./page'),{
+const Page = importedComponent(()=>import('./components/home/page'),{
   LoadingComponent : loading
 })
 
@@ -21,8 +21,10 @@ function App() {
   return (
    <div className="App">
     <BrowserRouter>
+    <ResponsiveDrawer />
       <Switch>
-        <Route exact path="/" component={Editor} />
+        <Route exact path="/" component={Page} />
+        <Route path="/editor" component={Editor} />
         <Route  path="/login" component={Login} />
       </Switch>
     </BrowserRouter>

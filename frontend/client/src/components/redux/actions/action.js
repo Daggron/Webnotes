@@ -14,3 +14,10 @@ export function Add_Auth(token){
         value : token
     }
 }
+
+export function Logout(){
+    localStorage.removeItem('authToken');
+    return{
+        type : "Logout"
+    }
+}

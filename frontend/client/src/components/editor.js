@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { TextField, Typography } from '@material-ui/core';
 import Axios from 'axios';
 import {Add_Note} from '../components/redux/actions/action'
+import { Redirect } from 'react-router-dom';
 
 
 var toolbarOptions = [
@@ -64,16 +65,18 @@ export default function Editor() {
         })
     }
 
+    if(token){
+
     return (
         <React.Fragment>
                 <Typography variant="h2">
                     Make a note
                 </Typography>
-                <button onClick={handleSave}>
-                    Save
-                </button>
-                <TextField onChange={handleTitle} label="Title of the note" variant="outlined" style={{width : "90vw"}} />
-              <ReactQuill onChange={handleChange} className="editor" modules={modules} style={{height : "100vh" , width : "90vw" , margin : "auto" , marginTop: 10 }} />
+                <TextField onChange={handleTitle} label="Title of the note" variant="outlined" style={{width : "70vw"}} />
+                <ReactQuill onChange={handleChange} className="editor" modules={modules} style={{height : "100vh" , width : "70vw" , margin : "auto" , marginTop: 10 , marginLeft : "15vw" }} />
         </React.Fragment>
     )
+    }else{
+        return <Redirect to="/" />
+    }
 }
