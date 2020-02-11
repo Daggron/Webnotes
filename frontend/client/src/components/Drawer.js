@@ -5,12 +5,6 @@ import Divider from '@material-ui/core/Divider';
 import Drawer from '@material-ui/core/Drawer';
 import Hidden from '@material-ui/core/Hidden';
 import IconButton from '@material-ui/core/IconButton';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-import MailIcon from '@material-ui/icons/Mail';
 import MenuIcon from '@material-ui/icons/Menu';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
@@ -52,6 +46,12 @@ const useStyles = makeStyles(theme => ({
     flexGrow: 1,
     padding: theme.spacing(3),
   },
+  Button:{
+    margin : "auto",
+    textAlign : "center",
+    marginTop : 15,
+    textDecoration : "none"
+  }
 }));
 
 function ResponsiveDrawer(props) {
@@ -76,30 +76,41 @@ function ResponsiveDrawer(props) {
 
   const drawer =(
     
-        <div>
-          <Link to="/editor">
-            <Button>
+        <div className={classes.Button}>
+          <Link style={{textDecoration : "none"}} to="/">
+            <Button  className={classes.Button} variant="contained" color="primary">
+              Home
+            </Button>
+          </Link>
+          <Divider/>
+          <Link  style={{textDecoration : "none"}} to="/editor" >
+            <Button  className={classes.Button} variant="contained" color="primary">
               Write Note
             </Button>
           </Link>
           <Divider />
-          <Link to="/notes">
-            <Button>
+          <Link  style={{textDecoration : "none"}} to="/notes">
+            <Button  className={classes.Button} variant="contained" color="primary">
               View Note
             </Button>
           </Link>
           <Divider/>
-          <Button onClick={handleLogout}>
+          <Button  className={classes.Button} variant="contained" color="primary" onClick={handleLogout}>
             Logout
           </Button>
         </div>
       )
     
   const logDrawer = (
-    <div>
-      <Link to="/login">
-        <Button>
+    <div  className={classes.Button}>
+      <Link  style={{textDecoration : "none"}} to="/login">
+        <Button variant="contained" color="primary"  className={classes.Button}>
           Login
+        </Button>
+      </Link>
+      <Link  style={{textDecoration : "none"}} to="/reister">
+        <Button variant="contained" color="primary"  className={classes.Button}>
+          Register
         </Button>
       </Link>
     </div>
@@ -120,7 +131,7 @@ function ResponsiveDrawer(props) {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap>
-            Responsive drawer
+            Web Note
           </Typography>
         </Toolbar>
       </AppBar>

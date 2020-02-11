@@ -4,6 +4,7 @@ import {useSelector, useDispatch } from 'react-redux'
 import {Add_All} from '../redux/actions/action';
 import AlertDialog from '../login/Alert';
 import Note from './note';
+import {Redirect} from 'react-router-dom'
 
 export default function Notes() {
 
@@ -31,7 +32,6 @@ export default function Notes() {
             dispatch(Add_All(data.data.data))
             
         }).catch(err=>{
-            
             setMessage("Network Error Has Occured Please Try After Some Time");
             setOpen(true);
         })
@@ -39,7 +39,9 @@ export default function Notes() {
 
     const notes = useSelector(state=>state.add_note)
 
-
+    if(!token){
+        return <Redirect to="/login" />
+    }
     return (
         <div>
             <AlertDialog open={open} handleClose={handleClose} message={message} />

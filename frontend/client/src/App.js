@@ -21,6 +21,10 @@ const Notes = importedComponent(()=>import('./components/home/notes'),{
   LoadingComponent : loading
 })
 
+const SingleNote = importedComponent(()=>import('./components/home/singleNote'),{
+  LoadingComponent : loading
+})
+
 function App() {
   return (
    <div className="App">
@@ -29,8 +33,9 @@ function App() {
       <Switch>
         <Route exact path="/" component={Page} />
         <Route path="/editor" component={Editor} />
-        <Route path="/notes" component={Notes}   />
+        <Route exact path="/notes" component={Notes}   />
         <Route  path="/login" component={Login} />
+        <Route path="/notes/:id" component={SingleNote}/>
       </Switch>
     </BrowserRouter>
    </div>

@@ -27,8 +27,7 @@ function add_note (state = [] , action){
                 }
             ]
         case "Add_All":
-            return [
-                ...state , 
+            return [ 
                 ...action.value
             ]
         default : return state

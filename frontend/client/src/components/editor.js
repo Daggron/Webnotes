@@ -46,7 +46,6 @@ export default function Editor() {
 
     const handleTitle = (e)=>{
         setTitle(e.target.value)
-        console.log(title);
     }
 
     const [open, setOpen] = React.useState(false);
@@ -90,14 +89,15 @@ export default function Editor() {
     return (
         <React.Fragment>
             <AlertDialog open={open} handleClose={handleClose} message={message} />
-                <Typography variant="h2">
+                <Typography variant="h2" style={{textAlign : "center"}}>
                     Make a note
                 </Typography>
-                <TextField onChange={handleTitle} label="Title of the note" variant="outlined" style={{width : "70vw"}} />
-                <ReactQuill onChange={handleChange} className="editor" modules={modules} style={{height : "100vh" , width : "70vw" , margin : "auto" , marginTop: 10 , marginLeft : "15vw" }} />
-                <Button onClick={handleSave}>
+                <Button variant="contained" color="secondary" style={{position : "absolute" , float : "right" , left : "80%" , zIndex : 1 , top : "10%" }} onClick={handleSave}>
                     Save
                 </Button>
+                <TextField onChange={handleTitle} label="Title of the note" variant="outlined" style={{width : "70vw" , marginLeft : "15vw"}} />
+                <ReactQuill onChange={handleChange} className="editor" modules={modules} style={{height : "100vh" , width : "70vw" , margin : "auto" , marginTop: 10 , marginLeft : "15vw" , overflowY:"scroll" }} />
+                
         </React.Fragment>
     )
     }else{
