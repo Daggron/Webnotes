@@ -15,6 +15,13 @@ export function Add_Auth(token){
     }
 }
 
+export function Add_All(value){
+    return{
+        type: "Add_All",
+        value : value
+    }
+}
+
 export function Logout(){
     localStorage.removeItem('authToken');
     return{

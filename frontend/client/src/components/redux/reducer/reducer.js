@@ -22,7 +22,8 @@ function add_note (state = [] , action){
                 ...state,
                 {
                     title : action.value.title,
-                    data : action.value.data
+                    data : action.value.data,
+                    _id : action.value._id || Math.random().toFixed(5) 
                 }
             ]
         case "Add_All":

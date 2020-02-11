@@ -41,10 +41,7 @@ export default function Log() {
     }
 
    
-    const handleClickOpen = () => {
-      setOpen(true);
-    };
-  
+    
     const handleClose = () => {
       setOpen(false);
     };

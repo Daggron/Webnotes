@@ -17,6 +17,10 @@ const Login = importedComponent(()=>import('./components/login/Log'),{
   LoadingComponent : loading
 })
 
+const Notes = importedComponent(()=>import('./components/home/notes'),{
+  LoadingComponent : loading
+})
+
 function App() {
   return (
    <div className="App">
@@ -25,6 +29,7 @@ function App() {
       <Switch>
         <Route exact path="/" component={Page} />
         <Route path="/editor" component={Editor} />
+        <Route path="/notes" component={Notes}   />
         <Route  path="/login" component={Login} />
       </Switch>
     </BrowserRouter>
