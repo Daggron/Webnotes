@@ -3,6 +3,7 @@ import Axios from 'axios'
 import {useSelector, useDispatch } from 'react-redux'
 import {Add_All} from '../redux/actions/action';
 import AlertDialog from '../login/Alert';
+import Note from './note';
 
 export default function Notes() {
 
@@ -22,6 +23,7 @@ export default function Notes() {
         setOpen(false);
     }
 
+
     React.useEffect(()=>{
         Axios.get('http://localhost:4000/notes/notes',options)
         .then(data=>{
@@ -33,13 +35,21 @@ export default function Notes() {
             setMessage("Network Error Has Occured Please Try After Some Time");
             setOpen(true);
         })
-    })
+    },[])
+
+    const notes = useSelector(state=>state.add_note)
 
 
     return (
         <div>
             <AlertDialog open={open} handleClose={handleClose} message={message} />
-            Hello World
+            <div style={{ height : "100%" , width : "80vw" , marginLeft : "10vw",display : "flex" , justifyContent : "center" , alignItems : "center" , alignContent:"center" ,flexDirection : "column" , flexWrap : "wrap"}}>
+                {
+                    notes.map(eachNote=>{
+                        return <Note note={eachNote} key={eachNote._id} />
+                    })
+                }
+            </div>
         </div>
     )
 }
