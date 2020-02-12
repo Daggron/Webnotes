@@ -1,7 +1,7 @@
 import React from 'react'
 import Axios from 'axios'
 import { useSelector } from 'react-redux'
-import { Paper, Typography, makeStyles } from '@material-ui/core';
+import { Paper, Typography} from '@material-ui/core';
 import { Redirect } from 'react-router-dom';
 import 'react-quill/dist/quill.snow.css';
 
@@ -29,6 +29,7 @@ export default function SingleNote(props) {
         }).catch(err=>{
             alert(err);
         })
+          //eslint-disable-next-line
     },[])
 
     if(!token){

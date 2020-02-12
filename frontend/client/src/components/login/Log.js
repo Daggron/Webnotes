@@ -21,8 +21,7 @@ const usestyles = makeStyles({
 
 export default function Log() {
 
-    const styles = usestyles()
-    const token = useSelector(state=>state.authenticate.login);
+    const styles = usestyles();
 
     const [username , setUsername] = React.useState(null);
     const [password , setPassword] = React.useState(null);

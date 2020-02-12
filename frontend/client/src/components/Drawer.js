@@ -108,7 +108,8 @@ function ResponsiveDrawer(props) {
           Login
         </Button>
       </Link>
-      <Link  style={{textDecoration : "none"}} to="/reister">
+      <Divider />
+      <Link  style={{textDecoration : "none"}} to="/register">
         <Button variant="contained" color="primary"  className={classes.Button}>
           Register
         </Button>

@@ -25,6 +25,10 @@ const SingleNote = importedComponent(()=>import('./components/home/singleNote'),
   LoadingComponent : loading
 })
 
+const Register = importedComponent(()=>import('./components/login/register'),{
+  LoadingComponent : loading
+})
+
 function App() {
   return (
    <div className="App">
@@ -36,6 +40,7 @@ function App() {
         <Route exact path="/notes" component={Notes}   />
         <Route  path="/login" component={Login} />
         <Route path="/notes/:id" component={SingleNote}/>
+        <Route path="/register" component={Register} />
       </Switch>
     </BrowserRouter>
    </div>

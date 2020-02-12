@@ -6,7 +6,7 @@ export default function note(props) {
     return (
         <div style={{cursor : 'pointer'}}>
             <Link to={`/notes/${props.note._id}`}>
-                <Paper style={{marginTop : 30 , height : 50 , padding : 20 , width : "80vw"}}>
+                <Paper style={{marginTop : 30 , height : 50 , padding : 20 , width : "80vw" , textAlign : "center"}}>
                     <Typography>
                         {props.note.title}
                     </Typography>

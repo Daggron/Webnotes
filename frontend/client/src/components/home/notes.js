@@ -35,6 +35,7 @@ export default function Notes() {
             setMessage("Network Error Has Occured Please Try After Some Time");
             setOpen(true);
         })
+        //eslint-disable-next-line
     },[])
 
     const notes = useSelector(state=>state.add_note)
